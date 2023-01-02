@@ -3,20 +3,31 @@ import {StyleSheet} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
-import {screensNames} from "./screens/ScreenNames";
+import {Screens} from "./screens/ScreenNames";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsScreens from "./screens/MealsScreens";
+import {defaultScreenOptions} from "./screens/defaultScreenOptions";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
         <>
-            <StatusBar style={'auto'}/>
+            <StatusBar style={'light'}/>
             <NavigationContainer>
-                <Stack.Navigator>
-                    <Stack.Screen name={screensNames.categories} component={CategoriesScreen}/>
-                    <Stack.Screen name={screensNames.meals} component={MealsScreens}/>
+                <Stack.Navigator screenOptions={defaultScreenOptions}>
+                    <Stack.Screen
+                        name={Screens.mealsCategories.name}
+                        component={CategoriesScreen}
+                        options={Screens.mealsCategories.options}
+                    />
+                    <Stack.Screen
+                        name={Screens.meals.name}
+                        component={MealsScreens}
+                        options={{
+                            title: Screens.meals.options.title
+                        }}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         </>
