@@ -1,9 +1,10 @@
-import {MEALS} from "../data/dummy-data";
-import {StyleSheet, FlatList, View, Text} from "react-native";
+import {MEALS, CATEGORIES} from "../data/dummy-data";
+import {StyleSheet, FlatList, View} from "react-native";
 import {useRoute} from "@react-navigation/native";
 import MealItem from "../components/MealItem";
+import {useLayoutEffect} from "react";
 
-export default function MealsScreens(/*{route}*/){
+export default function MealsScreens(/*{route}*/ {navigation}){
     // Method with prop route. This only works if the component is a Stack.Screen
     // const categoryId = route.params.categoryId;
     const route = useRoute();
@@ -12,6 +13,15 @@ export default function MealsScreens(/*{route}*/){
     const displayedMeals = MEALS.filter((meal) => {
         return meal.categoryIds.indexOf(categoryId) >= 0;
     });
+
+    // useLayoutEffect executes simultaneously with the component rendering
+    useLayoutEffect(() => {
+        const categoryTitle = CATEGORIES.find((category) => category.id === categoryId).title;
+
+        navigation.setOptions({
+            title: categoryTitle
+        });
+    }, [navigation, categoryId]);
 
     const renderMeal = (mealData) => {
         const meal = mealData.item;

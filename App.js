@@ -1,5 +1,4 @@
 import {StatusBar} from 'expo-status-bar';
-import {StyleSheet} from 'react-native';
 import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 
@@ -24,14 +23,9 @@ export default function App() {
                     <Stack.Screen
                         name={Screens.meals.name}
                         component={MealsScreens}
-                        options={{
-                            title: Screens.meals.options.title
-                        }}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
         </>
     );
 }
-
-const styles = StyleSheet.create({});
