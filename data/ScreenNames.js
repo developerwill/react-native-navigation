@@ -1,14 +1,14 @@
 export const Screens = {
     mealsCategories: {
-        name: "MealsCategories",
+        name: "mealsCategories",
         options : {
             title: "All Categories",
         }
     },
     meals: {
-        name: "Meals",
-        options : {
-            title: "Meals"
-        }
+        name: "meals"
+    },
+    mealDetails: {
+        name: "mealDetails"
     }
 }

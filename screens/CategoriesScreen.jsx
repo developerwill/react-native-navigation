@@ -1,7 +1,7 @@
 import {CATEGORIES} from '../data/dummy-data';
 import {FlatList} from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
-import {Screens} from "../screens/ScreenNames";
+import {Screens} from "../data/ScreenNames";
 
 // We could use ScrollView also since there aren't many categories and the list isn't dynamic
 function CategoriesScreen({navigation}) {
