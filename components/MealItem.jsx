@@ -2,16 +2,16 @@ import {Image, Pressable, StyleSheet, Text, View} from "react-native";
 
 export default function MealItem({title, imageURL, duration, complexity, affordability}) {
     return (
-        <View>
-            <Pressable>
+        <View style={styles.mealItem}>
+            <Pressable android_ripple={{color: '#ccc'}}>
                 <View>
                     <Image source={{uri: imageURL}} style={styles.image}/>
                     <Text style={styles.title}>{title}</Text>
                 </View>
-                <View>
-                    <Text>{duration}m</Text>
-                    <Text>{complexity.toUpperCase()}</Text>
-                    <Text>{affordability.toUpperCase()}</Text>
+                <View style={styles.details}>
+                    <Text style={styles.detailItem}>{duration}m</Text>
+                    <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
+                    <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
                 </View>
             </Pressable>
         </View>
@@ -19,6 +19,13 @@ export default function MealItem({title, imageURL, duration, complexity, afforda
 }
 
 const styles = StyleSheet.create({
+    mealItem: {
+        margin: 16,
+        borderRadius: 8,
+        overflow: 'hidden',
+        backgroundColor: 'white',
+        elevation: 4
+    },
     image: {
         width: '100%',
         height: 200
@@ -26,6 +33,17 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: 'bold',
         textAlign: 'center',
-        fontSize: 28
+        fontSize: 20,
+        margin: 8
+    },
+    details: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 8
+    },
+    detailItem: {
+        marginHorizontal: 4,
+        fontSize: 12
     }
 });
