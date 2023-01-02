@@ -1,9 +1,16 @@
 import {Image, Pressable, StyleSheet, Text, View} from "react-native";
 import {Screens} from "../data/ScreenNames";
 import {useNavigation} from "@react-navigation/native";
+import MealDetails from "./MealDetails";
 
 export default function MealItem({id, title, imageURL, duration, complexity, affordability}) {
     const navigation = useNavigation();
+
+    const mealDetailsProps = {
+        duration: duration,
+        complexity: complexity,
+        affordability: affordability
+    }
 
     const selectMealItemHandler = () => {
         navigation.navigate(
@@ -14,22 +21,12 @@ export default function MealItem({id, title, imageURL, duration, complexity, aff
 
     return (
         <View style={styles.mealItem}>
-            <Pressable
-                android_ripple={{color: '#ccc'}}
-                onPress={selectMealItemHandler}
-            >
+            <Pressable android_ripple={{color: '#ccc'}} onPress={selectMealItemHandler}>
                 <View>
-                    <Image
-                        source={{uri: imageURL}}
-                        style={styles.image}
-                    />
+                    <Image source={{uri: imageURL}} style={styles.image}/>
                     <Text style={styles.title}>{title}</Text>
                 </View>
-                <View style={styles.details}>
-                    <Text style={styles.detailItem}>{duration}m</Text>
-                    <Text style={styles.detailItem}>{complexity.toUpperCase()}</Text>
-                    <Text style={styles.detailItem}>{affordability.toUpperCase()}</Text>
-                </View>
+                <MealDetails {...mealDetailsProps}/>
             </Pressable>
         </View>
     );
@@ -52,15 +49,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 20,
         margin: 8
-    },
-    details: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 8
-    },
-    detailItem: {
-        marginHorizontal: 4,
-        fontSize: 12
     }
 });
