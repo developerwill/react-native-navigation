@@ -14,7 +14,13 @@ export default function MealsScreens(/*{route}*/){
     });
 
     const renderMeal = (mealData) => {
-        return <MealItem title={mealData.item.title}/>
+        return <MealItem
+            title={mealData.item.title}
+            imageURL={mealData.item.imageUrl}
+            duration={mealData.item.duration}
+            complexity={mealData.item.complexity}
+            affordability={mealData.item.affordability}
+        />
     }
 
     return (
