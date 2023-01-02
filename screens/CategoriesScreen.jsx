@@ -1,16 +1,26 @@
 import {CATEGORIES} from '../data/dummy-data';
 import {FlatList} from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
-
+import {screensNames} from "../screens/ScreenNames";
 /*
 * We could use ScrollView also since there aren't many categories and the list isn't dynamic
 */
 
-function renderCategoryItem(itemData) {
-    return <CategoryGridTile title={itemData.item.title} color={itemData.item.color}/>
-}
+function CategoriesScreen({navigation}) {
+    function renderCategoryItem(itemData) {
+        const pressHandler = () => {
+            navigation.navigate(screensNames.meals);
+        }
 
-export default function CategoriesScreen() {
+        return (
+            <CategoryGridTile
+                title={itemData.item.title}
+                color={itemData.item.color}
+                onPress={pressHandler}
+            />
+        );
+    }
+
     return (
         <FlatList
             data={CATEGORIES}
@@ -20,3 +30,5 @@ export default function CategoriesScreen() {
         />
     );
 }
+
+export default CategoriesScreen;
