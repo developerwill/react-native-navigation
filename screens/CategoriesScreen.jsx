@@ -2,14 +2,15 @@ import {CATEGORIES} from '../data/dummy-data';
 import {FlatList} from "react-native";
 import CategoryGridTile from "../components/CategoryGridTile";
 import {screensNames} from "../screens/ScreenNames";
-/*
-* We could use ScrollView also since there aren't many categories and the list isn't dynamic
-*/
 
+// We could use ScrollView also since there aren't many categories and the list isn't dynamic
 function CategoriesScreen({navigation}) {
     function renderCategoryItem(itemData) {
         const pressHandler = () => {
-            navigation.navigate(screensNames.meals);
+            navigation.navigate(
+                screensNames.meals,
+                {categoryId: itemData.item.id}
+            );
         }
 
         return (
