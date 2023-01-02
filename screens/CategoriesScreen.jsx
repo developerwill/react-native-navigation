@@ -16,6 +16,7 @@ export default function CategoriesScreen() {
             data={CATEGORIES}
             keyExtractor={(item) => item.id }
             renderItem={renderCategoryItem}
+            numColumns={2} // Forces to render 2 columns instead of 1
         />
     );
 }
