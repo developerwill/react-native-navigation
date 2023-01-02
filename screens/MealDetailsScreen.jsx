@@ -5,6 +5,7 @@ import {useLayoutEffect} from "react";
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
+import IconButton from "../components/IconButton";
 
 export default function MealDetailsScreens({navigation}) {
     const route = useRoute();
@@ -18,11 +19,24 @@ export default function MealDetailsScreens({navigation}) {
         duration: mealDetails.duration
     }
 
+    const headerButtonPressHandler = () => {
+        console.log("hi")
+    }
+
     useLayoutEffect(() => {
         navigation.setOptions({
             title: MEALS.find((meal) => meal.id === mealId).title
         });
-    }, [navigation]);
+        navigation.setOptions({
+            headerRight: () => {
+                return <IconButton
+                    onPress={headerButtonPressHandler}
+                    icon={"star"}
+                    color={"white"}
+                />
+            }
+        })
+    }, [navigation, headerButtonPressHandler]);
 
     return (
         <ScrollView style={styles.container}>
