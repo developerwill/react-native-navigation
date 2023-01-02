@@ -27,6 +27,7 @@ export default function MealsScreens(/*{route}*/ {navigation}){
         const meal = mealData.item;
 
         const mealItemProps = {
+            id: meal.id,
             title: meal.title,
             imageURL: meal.imageUrl,
             duration: meal.duration,
