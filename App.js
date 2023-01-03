@@ -49,6 +49,7 @@ export default function App() {
                     <Stack.Screen
                         name={Screens.mealDetails.name}
                         component={MealDetailsScreens}
+                        options={{title: 'About the Meal'}}
                     />
                 </Stack.Navigator>
             </NavigationContainer>

@@ -24,9 +24,10 @@ export default function MealDetailsScreens({navigation}) {
     }
 
     useLayoutEffect(() => {
+        /*// Gets meal's title dynamically
         navigation.setOptions({
             title: MEALS.find((meal) => meal.id === mealId).title
-        });
+        });*/
         navigation.setOptions({
             headerRight: () => {
                 return <IconButton
