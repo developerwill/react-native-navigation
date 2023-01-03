@@ -1,3 +1,5 @@
+import {Ionicons} from "@expo/vector-icons";
+
 export const Screens = {
     mealsCategories: {
         name: "mealsCategories",
@@ -18,13 +20,19 @@ export const Screens = {
     mealsCategoriesDrawer: {
         name: "mealsCategoriesDrawer",
         options : {
-            title: "All Categories"
+            title: "All Categories",
+            drawerIcon: ({color, size}) => (
+                <Ionicons name={'list'} color={color} size={size}/>
+            )
         }
     },
     favoriteMeals: {
         name: "favoriteMeals",
         options : {
-            title: "Favorite Meals"
+            title: "Favorite Meals",
+            drawerIcon: ({color, size}) => (
+                <Ionicons name={'star'} color={color} size={size}/>
+            )
         }
     }
 }
