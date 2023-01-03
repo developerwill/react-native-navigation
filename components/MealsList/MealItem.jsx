@@ -1,7 +1,7 @@
 import {Image, Pressable, StyleSheet, Text, View} from "react-native";
-import {Screens} from "../data/ScreenNames";
+import {Screens} from "../../data/ScreenNames";
 import {useNavigation} from "@react-navigation/native";
-import MealDetails from "./MealDetails";
+import MealDetails from "../MealDetails";
 
 export default function MealItem({id, title, imageURL, duration, complexity, affordability}) {
     const navigation = useNavigation();
